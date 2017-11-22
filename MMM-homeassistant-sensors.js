@@ -47,6 +47,7 @@ Module.register("MMM-homeassistant-sensors", {
         for (var i = 0; i < values.length; i++) {
 //	  console.log(data);
           var val = this.getValue(data, values[i]);
+	  var name=this.getName(data, values[i]);
 //          console.log(val);
           if (val) {
             tableElement.appendChild(this.addValue(values[i], val));
@@ -75,8 +76,20 @@ Module.register("MMM-homeassistant-sensors", {
 
 //       console.log(data[i].entity_id + " == " + value);
        if (data[i].entity_id == value){
-          console.log(data[i].state);
-	  return data[i].state;
+          console.log(data[i].state + " " + data[i].attributes.unit_of_measurement);
+	  return data[i].state + " " + data[i].attributes.unit_of_measurement;
+       }
+    }
+  return null;
+  },
+
+  getName: function(data, value) {
+    for(var i=0; i<data.length;i++){
+
+//       console.log(data[i].entity_id + " == " + value);
+       if (data[i].entity_id == value){
+          console.log(data[i].attributes.friendly_name);
+          return data[i].attributes.friendly_name;
        }
     }
   return null;
@@ -93,8 +106,11 @@ Module.register("MMM-homeassistant-sensors", {
       name = name.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();});
       name = name.split("_").join(" ");
       name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+      
     }
-    row.innerHTML = name + ": " + JSON.stringify(value);
+    console.log(name + ": " + value);
+//    row.innerHTML = name + ": " + JSON.stringify(value);
+    row.innerHTML = name + ": " + value;
     return row;
   },
 
