@@ -1,5 +1,5 @@
 # MMM-homeassistant-feed
-A MagicMirror module that displays information from any json source
+A MagicMirror module that displays information from homeassistant API.
 
 This code is partially copied from https://github.com/amcolash/MMM-json-feed.
 
@@ -13,7 +13,8 @@ modules: [
     module: 'MMM-homeassistant-feed',
     position: 'bottom_left',
     config: {
-      url: 'http://youehomeassistant:8123/api/states'
+      url: 'http://youehomeassistant:8123/api/states',
+      values: 'zone.home'
     }
   }
 ]
