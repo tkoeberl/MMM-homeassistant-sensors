@@ -14,7 +14,9 @@ modules: [
     position: 'bottom_left',
     config: {
       url: 'http://youehomeassistant:8123/api/states',
-      values: 'zone.home'
+      prettyName : 'true',
+      stripName: 'true',
+      values: ["cover.office", "sensor.owm_pressure"]
     }
   }
 ]
