@@ -10,7 +10,7 @@ It is very simple to set up this module, a sample configuration looks like this:
 ```
 modules: [
   {
-    module: 'MMM-homeassistant-feed',
+    module: 'MMM-homeassistant-sensors',
     position: 'bottom_left',
     config: {
       url: 'http://youehomeassistant:8123/api/states',
